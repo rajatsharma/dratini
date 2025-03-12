@@ -34,21 +34,15 @@ export default async function HomePage({
     : allPokemons;
 
   return (
-    <main className="container mx-auto px-4 py-8 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">
-        Dratini - Tiny Pokédex
+    <main className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600 dark:text-blue-400">
+        Dratini
       </h1>
 
       {/* Client boundary */}
       <SearchComponent initialSearch={searchQuery} />
 
-      {filteredPokemons.length > 0 ? (
-        <PokemonList pokemons={filteredPokemons} />
-      ) : (
-        <p className="text-center text-gray-500">
-          No Pokémon found for "{searchQuery}".
-        </p>
-      )}
+      <PokemonList pokemons={filteredPokemons} />
     </main>
   );
 }
