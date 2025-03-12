@@ -42,16 +42,19 @@ export default async function HomePage({
 
   return (
     <main className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
-        <span className="bg-gradient-to-r from-indigo-600 to-teal-500 text-transparent bg-clip-text">
-          Pokédex
-        </span>
-      </h1>
+      <div className="flex mb-12 justify-between">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
+          <span className="bg-gradient-to-r from-indigo-600 to-teal-500 text-transparent bg-clip-text">
+            Kanto
+          </span>
+          <span className="font-light">Pokédex</span>
+        </h1>
 
-      {/* Client boundary */}
-      <Suspense fallback={"Loading..."}>
-        <SearchComponent initialSearch={searchQuery} />
-      </Suspense>
+        {/* Client boundary */}
+        <Suspense fallback={"Loading..."}>
+          <SearchComponent initialSearch={searchQuery} />
+        </Suspense>
+      </div>
 
       <PokemonList pokemons={filteredPokemons} />
     </main>

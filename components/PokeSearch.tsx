@@ -15,15 +15,19 @@ export default function PokeSearch({
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const debouncedUrlUpdate = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
 
-    if (deferredQuery.trim()) {
-      params.set("q", deferredQuery.trim());
-    } else {
-      params.delete("q");
-    }
+      if (deferredQuery.trim().length > 0) {
+        params.set("q", deferredQuery.trim());
+      } else {
+        params.delete("q");
+      }
 
-    router.push(`${pathname}?${params.toString()}`);
+      router.push(`${pathname}?${params.toString()}`);
+    }, 1000);
+
+    return () => clearTimeout(debouncedUrlUpdate);
   }, [deferredQuery]);
 
   return (
@@ -33,7 +37,7 @@ export default function PokeSearch({
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
       placeholder="Search Pokémon..."
-      className="px-4 py-2 border-none rounded-l-md w-full max-w-md background-none"
+      className="px-4 py-2 border rounded-l-md w-full max-w-md border-gray-200 dark:border-gray-700 focus:border-gray-200 focus:dark:border-gray-700 outline-none rounded-lg"
     />
   );
 }
