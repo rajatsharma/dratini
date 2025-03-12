@@ -1,12 +1,16 @@
 import PokemonList from "@/components/PokeList";
 import SearchComponent from "@/components/PokeSearch";
 import { Pokemon, PokeResponse } from "@/types";
+import { Suspense } from "react";
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
 async function getPokemons(limit: number = 150): Promise<Pokemon[]> {
   try {
-    const response = await fetch(`${POKEMON_API_URL}?limit=${limit}`);
+    const response = await fetch(`${POKEMON_API_URL}?limit=${limit}`, {
+      cache: "force-cache",
+    });
+
     if (!response.ok) {
       throw new Error("Unable to fetch");
     }
@@ -19,13 +23,16 @@ async function getPokemons(limit: number = 150): Promise<Pokemon[]> {
   }
 }
 
+type SearchParams = Promise<{ q: string }>;
+
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: SearchParams;
 }) {
   const allPokemons = await getPokemons(150);
-  const searchQuery = searchParams?.q?.toLowerCase() || "";
+  const awaitedSearchParams = await searchParams;
+  const searchQuery = awaitedSearchParams?.q?.toLowerCase() ?? "";
 
   const filteredPokemons = searchQuery
     ? allPokemons.filter((pokemon) =>
@@ -35,12 +42,16 @@ export default async function HomePage({
 
   return (
     <main className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600 dark:text-blue-400">
-        Dratini
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
+        <span className="bg-gradient-to-r from-indigo-600 to-teal-500 text-transparent bg-clip-text">
+          Pokédex
+        </span>
       </h1>
 
       {/* Client boundary */}
-      <SearchComponent initialSearch={searchQuery} />
+      <Suspense fallback={"Loading..."}>
+        <SearchComponent initialSearch={searchQuery} />
+      </Suspense>
 
       <PokemonList pokemons={filteredPokemons} />
     </main>

@@ -31,7 +31,7 @@ async function getPokemonSpeciesDetails(url: string): Promise<Species | null> {
   }
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ name: string }[]> {
   const response = await fetch(`${POKEMON_API_URL}?limit=150`);
   const data = await response.json();
   return data.results.map((pokemon: { name: string }) => ({
@@ -39,12 +39,15 @@ export async function generateStaticParams() {
   }));
 }
 
+type Params = Promise<{ name: string }>;
+
 export default async function PokemonDetailPage({
   params,
 }: {
-  params: { name: string };
+  params: Params;
 }) {
-  const pokemon = await getPokemonDetails(params.name);
+  const awaitedParams = await params;
+  const pokemon = await getPokemonDetails(awaitedParams.name);
 
   if (!pokemon) {
     return (
@@ -73,6 +76,7 @@ export default async function PokemonDetailPage({
     "No description available.";
 
   const imageUrl = getPokemonImageUrl(pokemon);
+  const primaryType = pokemon.types[0].type.name.toLowerCase();
 
   return (
     <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
@@ -85,7 +89,9 @@ export default async function PokemonDetailPage({
       <div className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-6 md:p-8">
         <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
           <div className="flex-shrink-0 mx-auto md:mx-0">
-            <div className="relative w-48 h-48 md:w-64 md:h-64 border rounded-md bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+            <div
+              className={`relative w-48 h-48 md:w-64 md:h-64 border rounded-md bg-gray-100 dark:bg-gray-700 dark:border-gray-600 type-${primaryType}`}
+            >
               <Image
                 src={imageUrl}
                 alt={pokemon.name}
@@ -143,31 +149,28 @@ export default async function PokemonDetailPage({
                 </p>
               </div>
             </div>
-
-            <div>
-              <h2 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">
-                Base Stats
-              </h2>
-              {pokemon.stats.map((statInfo) => (
-                <div key={statInfo.stat.name} className="mb-2">
-                  <div className="flex justify-between text-sm font-medium text-gray-600 dark:text-gray-300">
-                    <span className="capitalize">
-                      {statInfo.stat.name.replace("-", " ")}
-                    </span>
-                    <span>{statInfo.base_stat}</span>
-                  </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                    <div
-                      className="bg-blue-500 h-2.5 rounded-full"
-                      style={{
-                        width: `${Math.min(statInfo.base_stat, 150) / 1.5}%`,
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
+        </div>
+
+        <div className="mt-6">
+          {pokemon.stats.map((statInfo) => (
+            <div key={statInfo.stat.name} className="mb-2">
+              <div className="flex justify-between text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
+                <span className="uppercase">
+                  {statInfo.stat.name.replace("-", " ")}
+                </span>
+                <span>{statInfo.base_stat}</span>
+              </div>
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                <div
+                  className={`type-${primaryType} h-2.5 rounded-full`}
+                  style={{
+                    width: `${Math.min(statInfo.base_stat, 150) / 1.5}%`,
+                  }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
@@ -193,13 +196,11 @@ export default async function PokemonDetailPage({
   );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { name: string };
-}) {
+export async function generateMetadata({ params }: { params: Params }) {
+  const awaitedParams = await params;
   const pokemonName =
-    params.name.charAt(0).toUpperCase() + params.name.slice(1);
+    awaitedParams.name.charAt(0).toUpperCase() + awaitedParams.name.slice(1);
+
   return {
     title: `${pokemonName} | Pokémon Details`,
     description: `Details for Pokémon ${pokemonName}`,

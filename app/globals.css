@@ -5,24 +5,24 @@ body {
     @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
 }
 
-.type-normal { background-color: #A8A77A; }
-.type-fire { background-color: #EE8130; }
-.type-water { background-color: #6390F0; }
-.type-electric { background-color: #F7D02C; }
-.type-grass { background-color: #7AC74C; }
-.type-ice { background-color: #96D9D6; }
-.type-fighting { background-color: #C22E28; }
-.type-poison { background-color: #A33EA1; }
-.type-ground { background-color: #E2BF65; }
-.type-flying { background-color: #A98FF3; }
-.type-psychic { background-color: #F95587; }
-.type-bug { background-color: #A6B91A; }
-.type-rock { background-color: #B6A136; }
-.type-ghost { background-color: #735797; }
-.type-dragon { background-color: #6F35FC; }
-.type-dark { background-color: #705746; }
-.type-steel { background-color: #B7B7CE; }
-.type-fairy { background-color: #D685AD; }
+.type-normal { background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%); }
+.type-fire { background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%); }
+.type-water { background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); }
+.type-electric { background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%); }
+.type-grass { background-image: linear-gradient(to top, #0fd850 0%, #f9f047 100%); }
+.type-ice { background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%); }
+.type-fighting { background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%); }
+.type-poison { background-image: linear-gradient(-225deg, #ac32e4 0%, #7918f2 48%, #4801ff 100%); }
+.type-ground { background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%); }
+.type-flying { background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%); }
+.type-psychic { background-image: linear-gradient(-225deg, #69eacb 0%, #eaccf8 48%, #6654f1 100%); }
+.type-bug { background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); }
+.type-rock { background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%); }
+.type-ghost { background-image: linear-gradient(60deg, #29323c 0%, #485563 100%); }
+.type-dragon { background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%); }
+.type-dark { background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); }
+.type-steel { background-image: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%); }
+.type-fairy { background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%); }
 
 .relative img[fill] {
     object-fit: contain;
