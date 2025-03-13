@@ -45,7 +45,7 @@ export default async function HomePage({
       <div className="flex mb-12 justify-between">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
           <span className="bg-gradient-to-r from-indigo-600 to-teal-500 text-transparent bg-clip-text">
-            Kanto
+            Kantō
           </span>
           <span className="font-light">Pokédex</span>
         </h1>
