@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Pokemon } from "@/types";
-import { getPokemonImageUrl } from "@/lib/utils";
+import { getPokemonImage } from "@/lib/utils";
 
 interface PokemonListProps {
   pokemons: Pokemon[];
@@ -11,7 +11,8 @@ export default function PokemonList({ pokemons }: PokemonListProps) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       {pokemons.map((pokemon) => {
-        const imageUrl = getPokemonImageUrl(pokemon);
+        const imageUrl = getPokemonImage(pokemon.url);
+
         return (
           <Link
             href={`/pokemon/${pokemon.name}`}

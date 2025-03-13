@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Details, Species } from "@/types";
-import { getPokemonImageUrl } from "@/lib/utils";
+import { getPokemonImage } from "@/lib/utils";
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -9,7 +9,7 @@ async function getPokemonDetails(name: string): Promise<Details | null> {
   try {
     const response = await fetch(`${POKEMON_API_URL}/${name.toLowerCase()}`);
     if (!response.ok) {
-      if (response.status === 404) return null;
+      throw new Error(`Failed to fetch pokemon details`);
     }
     return await response.json();
   } catch (error) {
@@ -55,7 +55,7 @@ export default async function PokemonDetailPage({
         <h1 className="text-2xl font-bold">Pokémon not found.</h1>
         <Link
           href="/"
-          className="text-blue-500 hover:underline mt-4 inline-block"
+          className="text-amber-500 hover:underline mt-4 inline-block"
         >
           Back to list
         </Link>
@@ -75,14 +75,14 @@ export default async function PokemonDetailPage({
     flavorTextEntry?.flavor_text.replace(/[\n\f\r]/g, " ") ??
     "No description available.";
 
-  const imageUrl = getPokemonImageUrl(pokemon);
+  const imageUrl = getPokemonImage(pokemon.id);
   const primaryType = pokemon.types[0].type.name.toLowerCase();
 
   return (
     <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
       <Link
         href="/"
-        className="text-blue-500 hover:underline mb-6 inline-block dark:text-blue-400"
+        className="text-amber-500 hover:underline mb-6 inline-block dark:text-amber-400"
       >
         ← Back to Pokédex
       </Link>

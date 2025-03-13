@@ -21,18 +21,18 @@ export interface Sprites {
 
 export interface Type {
   slot: number;
-  type: { name: string; url: string; };
+  type: { name: string; url: string };
 }
 
 export interface Ability {
-  ability: { name: string; url: string; };
+  ability: { name: string; url: string };
   is_hidden: boolean;
   slot: number;
 }
 
 export interface Stat {
   base_stat: number;
-  stat: { name: string; url: string; };
+  stat: { name: string; url: string };
 }
 
 export interface Details {
@@ -44,12 +44,12 @@ export interface Details {
   types: Type[];
   abilities: Ability[];
   stats: Stat[];
-  species: { url: string; };
+  species: { url: string };
 }
 
 export interface Species {
   flavor_text_entries: {
     flavor_text: string;
-    language: { name: string; };
+    language: { name: string };
   }[];
 }

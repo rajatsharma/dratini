@@ -4,32 +4,35 @@ A Next.js 15 App Router application to browse and search the Kantō region Poké
 
 ## 🛠️ Tech Stack
 
-*   **Framework:** Next.js 15 (App Router)
-*   **UI Library:** [React 19](https://reactjs.org/)  (with Server Components)
-*   **Styling:** Tailwind CSS
-*   **Data Source:** [PokeAPI](https://pokeapi.co/)
+- **Framework:** Next.js 15 (App Router)
+- **UI Library:** [React 19](https://reactjs.org/) (with Server Components)
+- **Styling:** Tailwind CSS
+- **Data Source:** [PokeAPI](https://pokeapi.co/)
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 
-*   [Node.js](https://nodejs.org/) (v18.17 or later recommended)
-*   [pnpm](https://pnpm.io/)
+- [Node.js](https://nodejs.org/) (v18.17 or later recommended)
+- [pnpm](https://pnpm.io/)
 
 ### Installation & Setup
 
 1.  **Clone the repository:**
+
     ```bash
     git clone https://github.com/rajatsharma/dratini.git
     cd dratini
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     pnpm install
     ```
 
 3.  **Run the development server:**
+
     ```bash
     pnpm run dev
     ```
@@ -37,6 +40,7 @@ A Next.js 15 App Router application to browse and search the Kantō region Poké
 4.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## 📂 Project Structure
+
 ```shell
 dratini/
 ├── app/
