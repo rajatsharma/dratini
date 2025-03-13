@@ -6,29 +6,23 @@ import { getPokemonImage } from "@/lib/utils";
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
 async function getPokemonDetails(name: string): Promise<Details | null> {
-  try {
-    const response = await fetch(`${POKEMON_API_URL}/${name.toLowerCase()}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch pokemon details`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return null;
+  const response = await fetch(`${POKEMON_API_URL}/${name.toLowerCase()}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch pokemon details`);
   }
+
+  return response.json();
 }
 
 async function getPokemonSpeciesDetails(url: string): Promise<Species | null> {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch species details from ${url}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return null;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch species details from ${url}`);
   }
+
+  return await response.json();
 }
 
 export async function generateStaticParams(): Promise<{ name: string }[]> {

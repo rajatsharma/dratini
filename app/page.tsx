@@ -12,7 +12,7 @@ async function getPokemons(limit: number = 150): Promise<Pokemon[]> {
     });
 
     if (!response.ok) {
-      throw new Error("Unable to fetch");
+      return [];
     }
 
     const data: PokeResponse = await response.json();
@@ -51,9 +51,7 @@ export default async function HomePage({
         </h1>
 
         {/* Client boundary */}
-        <Suspense fallback={"Loading..."}>
-          <SearchComponent initialSearch={searchQuery} />
-        </Suspense>
+        <SearchComponent initialSearch={searchQuery} />
       </div>
 
       <PokemonList pokemons={filteredPokemons} />
