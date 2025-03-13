@@ -1,12 +1,11 @@
 # Kantō Pokédex
 
-A Next.js 13+ App Router application to browse and search the Kanto region Pokémon, built with React Server Components, TypeScript, and Tailwind CSS.
+A Next.js 15 App Router application to browse and search the Kantō region Pokémon, built with React Server Components, and Tailwind CSS.
 
 ## 🛠️ Tech Stack
 
 *   **Framework:** Next.js 15 (App Router)
 *   **UI Library:** [React 19](https://reactjs.org/)  (with Server Components)
-*   **Language:** TypeScript
 *   **Styling:** Tailwind CSS
 *   **Data Source:** [PokeAPI](https://pokeapi.co/)
 
@@ -21,8 +20,8 @@ A Next.js 13+ App Router application to browse and search the Kanto region Poké
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/rajatsharma/lavenshtein.git
-    cd lavenshtein
+    git clone https://github.com/rajatsharma/dratini.git
+    cd dratini
     ```
 
 2.  **Install dependencies:**
