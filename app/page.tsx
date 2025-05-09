@@ -4,6 +4,7 @@ import { Pokemon, PokeResponse } from "@/types";
 import { Suspense } from "react";
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
+export const experimental_ppr = true;
 
 async function getPokemons(limit: number = 150): Promise<Pokemon[]> {
   try {
@@ -51,7 +52,9 @@ export default async function HomePage({
         </h1>
 
         {/* Client boundary */}
-        <SearchComponent initialSearch={searchQuery} />
+        <Suspense fallback="Loading...">
+          <SearchComponent initialSearch={searchQuery} />
+        </Suspense>
       </div>
 
       <PokemonList pokemons={filteredPokemons} />
