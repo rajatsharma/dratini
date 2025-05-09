@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
-import "@/globals.css";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
