@@ -1,10 +1,8 @@
 import PokemonList from "@/components/PokeList";
-import SearchComponent from "@/components/PokeSearch";
 import { Pokemon, PokeResponse } from "@/types";
-import { Suspense } from "react";
+import PokeSearch from "@/components/PokeSearch";
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
-export const experimental_ppr = true;
 
 async function getPokemons(limit: number = 150): Promise<Pokemon[]> {
   try {
@@ -43,7 +41,7 @@ export default async function HomePage({
 
   return (
     <main className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <div className="flex mb-12 justify-between">
+      <div className="md:flex-row lg:flex mb-12 lg:justify-between md:justify-evenly">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
           <span className="bg-gradient-to-r from-indigo-600 to-teal-500 text-transparent bg-clip-text">
             Kantō
@@ -52,9 +50,7 @@ export default async function HomePage({
         </h1>
 
         {/* Client boundary */}
-        <Suspense fallback="Loading...">
-          <SearchComponent initialSearch={searchQuery} />
-        </Suspense>
+        <PokeSearch initialSearch={searchQuery} />
       </div>
 
       <PokemonList pokemons={filteredPokemons} />

@@ -49,6 +49,7 @@ export default async function PokemonDetailPage({
         <h1 className="text-2xl font-bold">Pokémon not found.</h1>
         <Link
           href="/"
+          prefetch
           className="text-amber-500 hover:underline mt-4 inline-block"
         >
           Back to list
