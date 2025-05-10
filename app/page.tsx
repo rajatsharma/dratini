@@ -1,6 +1,7 @@
 import PokemonList from "@/components/PokeList";
 import { Pokemon, PokeResponse } from "@/types";
 import PokeSearch from "@/components/PokeSearch";
+import WebVitals from "@/components/WebVitals";
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -51,6 +52,7 @@ export default async function HomePage({
 
         {/* Client boundary */}
         <PokeSearch initialSearch={searchQuery} />
+        <WebVitals />
       </div>
 
       <PokemonList pokemons={filteredPokemons} />
