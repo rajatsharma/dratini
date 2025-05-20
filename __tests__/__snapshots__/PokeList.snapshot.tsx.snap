@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Pokélist unchanged 1`] = `
+<div>
+  <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+  >
+    <a
+      class="group border rounded-lg shadow-md p-4 flex flex-col items-center bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+      href="/pokemon/Mew"
+    >
+      <div
+        class="relative w-32 h-32 mb-2"
+      >
+        <img
+          alt="Mew"
+          class="object-contain group-hover:scale-105 transition-transform"
+          data-nimg="fill"
+          decoding="async"
+          fetchpriority="high"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+          src="/_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=3840&q=75"
+          srcset="/_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=256&q=75 256w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=384&q=75 384w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2FPokeAPI%2Fsprites%2Fmaster%2Fsprites%2Fpokemon%2Fother%2Fofficial-artwork%2F151.png&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+      </div>
+      <h2
+        class="text-lg font-semibold capitalize text-center text-gray-800 dark:text-gray-100"
+      >
+        Mew
+      </h2>
+    </a>
+  </div>
+</div>
+`;

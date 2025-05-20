@@ -1,11 +1,6 @@
-"use client";
-
 import { useReportWebVitals } from "next/web-vitals";
 
-export default function WebVitals() {
-  useReportWebVitals((metric) => {
-    console.log(metric);
-  });
-
+export default async function WebVitals() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return null;
 }
